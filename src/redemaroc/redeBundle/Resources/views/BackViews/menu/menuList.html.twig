@@ -1,0 +1,57 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} Wafacuir - Categorie {% endblock %}
+{% block pagetitle %} <h3> Consulter et modifier la Categorie </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">menu</li>
+        <li class="breadcrumb-item active"><a href="{{ path('menu_list') }}"> Consulter </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+                            <thead >
+                            <tr>
+
+                                <th> Categorie </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+
+                            {% for t in menu %}
+                                <tr>
+                                    <td> {{ t.menu }} </td>
+                                    <td> <a href="{{ path('menu_edit', {'id' : t.id}) }}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+                                    <td> <a href="{{ path('menu_delete', {'id' : t.id}) }}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+                                    <td><a href="{{ path('type_add') }}"><span class="btn info" aria-hidden="true"> + sous-categories </span></a></td>
+                                    <td> <a href="{{ path('type_list') }}"><span class="glyphicon glyphicon-pencil">sous-categorie liste</span></a> </td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <td><a href="{{ path('type_add') }}"><span class="btn info" aria-hidden="true"> Ajouter </span></a></td>
+
+    </div>
+
+
+
+{% endblock %}

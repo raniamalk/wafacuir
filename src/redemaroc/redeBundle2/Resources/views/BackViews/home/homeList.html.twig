@@ -1,0 +1,79 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} Wafacuir - List {% endblock %}
+{% block pagetitle %} <h3> Consulter et modifier les infos page acceuil </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Acceuil</li>
+        <li class="breadcrumb-item active"><a href="{{ path('home_list') }}"> Consulter </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+
+                            {% for h in home %}
+                            <tr>
+                                <td> Titre </td>
+                                <td> {{ h.titre }} </td>
+                            </tr>
+                            <tr>
+                                <td> Suite Titre </td>
+                                <td> {{ h.titresuite }} </td>
+                            </tr>
+                            <tr>
+                                <td> Texte </td>
+                                <td> {{ h.texte |striptags | slice(0, 1000)}} </td>
+                            </tr>
+                            <tr>
+                                <td> valeur </td>
+                                <td> {{ h.val1 }} </td>
+                            </tr><tr>
+                                <td> valeur </td>
+                                <td> {{ h.val1 }} </td>
+                            </tr>
+                            <tr>
+                                <td> valeur </td>
+                                <td> {{ h.val2 }} </td>
+                            </tr>
+                            <tr>
+                                <td> valeur </td>
+                                <td> {{ h.val3 }} </td>
+                            </tr>
+                            <tr>
+                                <td> Facebook </td>
+                                <td> {{ h.facebook }} </td>
+                            </tr>
+                            <tr>
+                                <td> Linkedin </td>
+                                <td> {{ h.linkedin }} </td>
+                            </tr>
+                            <tr>
+                                <td> Youtube </td>
+                                <td> {{ h.youtube }} </td>
+                            </tr>
+
+                                <td><a href="{{ path('home_edit',{'id': h.id}) }}"><span class="btn info" aria-hidden="true"> Modifier </span></a></td>
+
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+
+{% endblock %}

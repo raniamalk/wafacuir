@@ -1,0 +1,94 @@
+
+#####       FrontOffice routing       #####
+
+rede_homepage:
+    path:     /
+    defaults: { _controller: redeBundle:Default:index }
+
+presentation_page:
+    path:     /presentation/
+    defaults: { _controller: redeBundle:Default:presentation}
+
+produit_page:
+    path:     /produit/{id}
+    defaults: { _controller: redeBundle:Default:produit}
+
+
+
+catalogue_page:
+    path:     /catalogue
+    defaults: { _controller: redeBundle:Default:catalogue}
+
+galerie_page:
+    path:     /galerie
+    defaults: { _controller: redeBundle:Default:galerie}
+
+references_page:
+    path:     /references
+    defaults: { _controller: redeBundle:Default:references}
+
+refer_page:
+    path:     /refer/{id}
+    defaults: { _controller: redeBundle:Default:refer}
+
+devis_page:
+    path:     /devis
+    defaults: { _controller: redeBundle:Default:devis}
+
+contact_page:
+    path:     /contact
+    defaults: { _controller: redeBundle:contact:add}
+
+#avis_page:
+#    path:     /avis/{id}
+#    defaults: { _controller: redeBundle:avis:add}
+
+documentation_page:
+    path:     /documentation
+    defaults: { _controller: redeBundle:Default:documentation }
+
+demandedevis_page:
+    path:     /demandedevis
+    defaults: { _controller: redeBundle:devis:add }
+
+firstlevel_page:
+    path:     /firstlevel
+    defaults: { _controller: redeBundle:Default:firstlevel }
+
+produit_recherche:
+    path:       /recherche
+    defaults:   { _controller: redeBundle:Default:result }
+
+
+
+  ######  /* Pannier */  ######
+
+
+supprimer:
+    path:       /supprimer/{id}
+    defaults:   { _controller: redeBundle:Default:supprimer }
+
+ajouter:
+    path:       /ajouter/{id}
+    defaults:   { _controller: redeBundle:Default:ajouter }
+
+panier:
+    path:       /panier
+    defaults:   { _controller: redeBundle:Default:panier }
+
+
+
+    ##### /* Prodtucts */ #####
+
+
+
+souscategorie_page:
+    path:     /produits/{id}
+    defaults: { _controller: redeBundle:Default:souscategorie }
+
+allprodtucts_page:
+    path:     /tous-les-produits
+    defaults: { _controller: redeBundle:Default:allprodtucts }
+
+
+

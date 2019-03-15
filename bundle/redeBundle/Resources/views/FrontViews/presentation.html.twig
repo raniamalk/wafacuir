@@ -1,0 +1,104 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - Presentation {% endblock %}
+{% block meta %}
+    {% for p in presentation %}
+    <meta name="keywords" content="{{ p.metakeywords }}">
+    <meta name="description" content="{{ p.metadescription }}">
+    {% endfor %}
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+<!-- Start About us -->
+<section id="mu-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Découvrez</span>
+                        <h2>A PROPOS DE NOUS</h2>
+                    </div>
+    {% for p in presentation %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mu-about-us-left">
+                                <img src="{{ asset('uploads/presentation/' ~ p.path) }}" alt="img">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="mu-about-us-right">
+                                <h2 class="comment-h21" > {{ p.titrep }} </h2>
+                                <p> {{ p.presentation | raw }} </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="mu-about-us-right">
+                                <h2 class="comment-h21" > {{ p.titrep }} </h2>
+                                <p>
+                                   {{ p.domaineactivite | raw }}
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+    {% endfor %}
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End About us -->
+
+
+
+    <!-- Start nos references -->
+    <section id="mu-reference">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-chef-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle"> Une sélection </span>
+                            <h2> de Nos professionnels </h2>
+                        </div>
+
+
+                        <div class="mu-chef-content">
+                            <ul class="mu-chef-nav">
+                                {% for e in equipe %}
+                                    <li>
+                                        <div class="mu-single-chef">
+                                            <figure class="mu-single-chef-img">
+                                                <img src="{{ asset('uploads/equipe/' ~ e.path) }}" alt="Image de notre {{ e.specialite }} {{ e.nom }}">
+                                            </figure>
+                                            <div class="mu-single-chef-info">
+                                                <h4>{{ e.nom }}</h4>
+                                                <span>{{ e.specialite }}</span>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End nos references -->
+
+
+
+{% endblock %}

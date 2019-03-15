@@ -1,0 +1,124 @@
+    <!-- Start Contact section -->
+
+
+
+    <section class="karl-testimonials-area section_padding_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_heading text-center">
+                        <h2 class="contact-titre">Contact</h2>
+                    </div>
+                </div>
+            </div>
+
+
+{#
+    <section id="mu-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-contact-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle">Entrer en contact</span>
+                            <h2>nous contacter</h2>
+                        </div>#}
+
+                        <div class="mu-contact-content">
+                            <div class="row">
+
+
+
+                                <div class="col-md-6">
+                                    <div class="mu-contact-left">
+                                        <!-- Email message div -->
+                                        <div id="form-messages">
+                                            <p>
+                                                Afin d’obtenir des renseignements au sujet de nos produits, veuillez remplir le formulaire ci-dessous et nous nous ferons un plaisir de vous répondre dans les meilleurs délais.
+                                            </p>
+                                        </div>
+                                        <!-- Start contact form -->
+
+                                        <form action="{{ path('contact_page') }} " method="post" {{ form_enctype(form) }} >
+                                            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                                            {{ form_row(form._token) }}
+
+
+                                            <div class="form-group">
+                                                <label for="name" class="input-label">Votre Nom</label>
+                                                {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                           {# <div class="form-group">
+                                                <label for="email" class="input-label">Raison social</label>
+                                                {{ form_widget(form.raisonsocial, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject" class="input-label">Adresse</label>
+                                                {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject" class="input-label">Domaine d’activité</label>
+                                                {{ form_widget(form.domaineactivite, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>#}
+                                            <div class="form-group">
+                                                <label for="subject" class="input-label">Téléphone</label>
+                                                {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject" class="input-label">Email</label>
+                                                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject" class="input-label">Objet</label>
+                                                {{ form_widget(form.objet, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            {#<div class="form-group">
+                                                <label for="subject">Document</label>
+                                                {{ form_widget(form.file, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>#}
+                                            <div class="form-group">
+                                                <label for="message" class="input-label">Message</label>
+                                                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <button type="submit" class="contact_button">Envoyer le message</button>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mu-contact-right">
+                                        <div class="mu-contact-widget">
+                                            <h3 class="adresse">Adresse</h3>
+                                            <p> zone indus. Moulay Rachid, rue 1, lotiss. 1 et 2. 5°ét.	, Hay Moulay Rachid, CASABLANCA. </p>
+                                            <address>
+                                                <p><i class="fa fa-phone"></i>  +212 (0) 5 22 71 98 01 </p>
+                                                <p><i class="fa fa-phone"></i>  +212 (0) 5 22 71 99 01 </p>
+                                                <p><i class="fa fa-mobile"></i>  +212 (0) 6 61 31 67 55 </p>
+                                                <p><i class="fa fa-fax"></i> +212 (0) 5 22 71 98 35  </p>
+                                                <p><i class="fa fa-envelope"></i><a href="mailto:wafacuir@wafacuir.ma">  wafacuir@wafacuir.ma</a></p>
+                                                <p><i class="fa fa-envelope-o"></i><a href="mailto:wafacuir@gmail.com">  wafacuir@gmail.com</a></p>
+                                                {#<p><i class="fa fa-map-marker"></i>368 St. Panama City, Florida, USA</p>#}
+                                            </address>
+                                        </div>
+                                        {#<div class="mu-contact-widget">#}
+                                        {#<h3>Open Hours</h3>#}
+                                        {#<address>#}
+                                        {#<p><span>Monday - Friday</span> 9.00 am to 12 pm</p>#}
+                                        {#<p><span>Saturday</span> 9.00 am to 10 pm</p>#}
+                                        {#<p><span>Sunday</span> 10.00 am to 12 pm</p>#}
+                                        {#</address>#}
+                                        {#</div>#}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {#</div>
+            </div>
+        </div>#}
+    </section>
+    <!-- End Contact section -->
+

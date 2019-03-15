@@ -1,0 +1,30 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - Demander Devis {% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+    <!-- Start Reservation section -->
+    <section id="mu-reservation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-reservation-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle"> Demander un </span>
+                            <h2> Devis </h2>
+                        </div>
+
+                        {% render(controller('redeBundle:devis:add'))%}
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Reservation section -->
+
+{% endblock %}

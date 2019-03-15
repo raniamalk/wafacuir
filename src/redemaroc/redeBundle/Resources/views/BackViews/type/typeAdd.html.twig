@@ -1,0 +1,92 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} Wafacuir - Sous-categorie {% endblock %}
+{% block pagetitle %} <h3> Ajout d'une Sous-categorie pour le menu </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Categorie</li>
+        <li class="breadcrumb-item active"><a href="{{ path('type_add') }}"> Ajout </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+
+<form action="{{ path('type_add') }} " method="post" {{ form_enctype(form) }}enctype="multipart/form-data" >
+    {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+    {{ form_row(form._token) }}
+
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal">
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Categorie </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.menu, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Sous-categorie </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.type, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 offset-sm-3">
+                            <button type="submit" class="btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+           {#<form action="{{ path('type_add') }} " method="post" enctype="multipart/form-data" >
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-horizontal">
+
+
+                            <div id="themesStyle" class="checkbox-inline form-group col-lg-15 row" >
+                                <label  for="inputdefault"class="col-sm-3 form-control-label"> Categorie </label><br>
+                                <div class="cb" id="listOfThemesstyle">
+                                    {% for m in menu %}
+
+                                        <input  name="menu" type="checkbox" class="checkbox" value="{{ m.id }}"/>&nbsp; &nbsp;{{ m.menu }}
+                                        <br>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="form-group row rsbottom">
+                                <label class="col-sm-3 form-control-label"> Sous-Categorie </label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="inputdefault" name="type" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 offset-sm-3">
+                                    <button type="submit" class="btn ">Enregistrer</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </form>#}
+
+
+
+{% endblock %}

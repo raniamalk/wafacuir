@@ -1,0 +1,16 @@
+#####       FrontOffice routing       #####
+
+FrontOffice:
+    resource: "@redeBundle/Resources/config/FrontRoutings/routing.yml"
+    prefix:
+
+
+
+
+#####       BackOffice routing        #####
+
+Backoffice:
+    resource: "@redeBundle/Resources/config/BackRoutings/routing.yml"
+    prefix:   /admin
+
+

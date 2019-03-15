@@ -1,0 +1,464 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - Produit {% endblock %}
+{% block meta %}
+        <meta name="keywords" content="{{ produit.metakeywords }}">
+        <meta name="description" content="{{ produit.metadescription }}">
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+<!-- Start About us -->
+<section id="mu-produit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+
+                    {#<div class="mu-title">
+                        <h2 class="prod-titre">{{ produit.titre }}</h2><br>
+                        <span>{{ produit.reference }}</span>
+                        <input name="ref" value="{{ produit.reference }}" style="display: none">
+                    </div>#}
+
+                    <div class="row">
+                        {#<div class="col-md-6 product">
+                            <div class="mu-about-us-left">
+                                <img src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="img" style="min-width: 90%; min-height: 400px;max-height: 500px;">
+                            </div>
+                        </div>#}
+                        {#<div class="col-md-6">
+                            <div class="mu-about-us-right">
+
+                                <h2 class="comment-h21" > {{ produit.titre1 }} </h2>
+
+                                <p>
+                                    {{ produit.presentation | raw }}
+                                </p>
+                                {% if panier[produit.id] is not defined %}
+                                    <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
+                                        <select name="qte" class="span1" style="display: none">
+                                            {% for i in 1..10 %}
+                                                <option value="{{ i }}">{{ i }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <input name="ref" id="ref" value="{{ produit.reference }}" style="display: none">
+                                        <input name="tit" id="tit" value="{{ produit.titre }}" style="display: none">
+
+                                        <div>
+                                            <button class="btn mu-readmore-btn pro-add-devis">Ajouter au devis</button>
+                                        </div>
+                                    </form>
+                                {% else %}
+
+                                {% endif %}
+
+                            </div>
+                            #}{#<input name="" value="{{ produit.reference }}">
+                            <input value="{{ produit.titre }}">
+                            <a class="add_panier" >Ajouter au panier</a>#}{#
+                        </div>
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="mu-about-us-right">
+                                <h2 class="comment-h21" > {{ produit.titre2 }} </h2>
+                                <p>
+                                    {{ produit.plusinfo | raw }}
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <!-- Start plus d'image -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mu-gallery-area">
+
+
+                                        <div class="mu-gallery-content">
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.patha is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit1/' ~ produit.patha) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit1/' ~ produit.patha) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.pathb is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit2/' ~ produit.pathb) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit2/' ~ produit.pathb) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.pathc is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit3/' ~ produit.pathc) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit3/' ~ produit.pathc) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.pathd is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit4/' ~ produit.pathd) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit4/' ~ produit.pathd) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                            <!-- end gallery image -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {% if (produit.video|length != 0 ) %}
+                                #}{# <h2 class="comment-h21 comment-border"> Video</h2>#}{#
+                                <div #}{#align="center"#}{# class="iframe-container" >
+
+                                    <iframe class="video-css" src="https://www.youtube.com/embed/{{ produit.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                            {% endif %}
+
+
+                        </div>
+                        #}{#</section>#}{#
+                        <!-- End Gallery -->
+
+#}
+
+                        <!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area Start <<<<<<<<<<<<<<<<<<<< -->
+                        {#<div class="breadcumb_area">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ol class="breadcrumb d-flex align-items-center">
+                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Dresses</a></li>
+                                            <li class="breadcrumb-item active">Long Dress</li>
+                                        </ol>
+                                        <!-- btn -->
+                                        <a href="#" class="backToHome d-block"><i class="fa fa-angle-double-left"></i> Back to Category</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>#}
+                        <!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area End <<<<<<<<<<<<<<<<<<<< -->
+
+                        <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
+                        <section class="single_product_details_area section_padding_0_100">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="single_product_thumb">
+                                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+
+                                                <ol class="carousel-indicators">
+                                                   {# <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url({{ asset('uploads/produitPrincipale/' ~ produit.path) }});">
+                                                    </li>#}
+                                                    {#<li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/product-2.jpg);">
+                                                    </li>
+                                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/product-3.jpg);">
+                                                    </li>
+                                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(img/product-img/product-4.jpg);">
+                                                    </li>#}
+                                                </ol>
+
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <a class="gallery_img" href="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}">
+                                                            <img class="d-block w-100" src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="First slide">
+                                                        </a>
+                                                    </div>
+                                                    {#<div class="carousel-item">
+                                                        <a class="gallery_img" href="img/product-img/product-2.jpg">
+                                                            <img class="d-block w-100" src="img/product-img/product-2.jpg" alt="Second slide">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="gallery_img" href="img/product-img/product-3.jpg">
+                                                            <img class="d-block w-100" src="img/product-img/product-3.jpg" alt="Third slide">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="gallery_img" href="img/product-img/product-4.jpg">
+                                                            <img class="d-block w-100" src="img/product-img/product-4.jpg" alt="Fourth slide">
+                                                        </a>
+                                                    </div>#}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="single_product_desc">
+
+                                            <h4 class="title"><a href="#" class="titre-produit-page">{{ produit.titre }}</a></h4>
+
+                                            <h4 class="price">{{ produit.prix }}</h4>
+
+                                            {#<p class="available">Available: <span class="text-muted">In Stock</span></p>#}
+
+                                            {#<div class="single_product_ratings mb-15">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            </div>#}
+
+                                            {#<div class="widget size mb-50">
+                                                <h6 class="widget-title">Size</h6>
+                                                <div class="widget-desc">
+                                                    <ul>
+                                                        <li><a href="#">32</a></li>
+                                                        <li><a href="#">34</a></li>
+                                                        <li><a href="#">36</a></li>
+                                                        <li><a href="#">38</a></li>
+                                                        <li><a href="#">40</a></li>
+                                                        <li><a href="#">42</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>#}
+
+                                            {#<!-- Add to Cart Form -->
+                                            <form class="cart clearfix mb-50 d-flex" method="post">
+                                                <div class="quantity">
+                                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+                                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                </div>
+                                                <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add to cart</button>
+                                            </form>#}
+
+                                            <div id="accordion" role="tablist">
+                                                <div class="card">
+                                                    <div class="card-header" role="tab" id="headingOne">
+                                                        <h6 class="mb-0">
+                                                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Description</a>
+                                                        </h6>
+                                                    </div>
+
+                                                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <p>{{ produit.presentation }}.</p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {#<div class="card">
+                                                    <div class="card-header" role="tab" id="headingTwo">
+                                                        <h6 class="mb-0">
+                                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Cart Details</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos nemo, nulla quaerat. Quibusdam non, eos, voluptatem reprehenderit hic nam! Laboriosam, sapiente! Praesentium.</p>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magnam laborum eaque.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header" role="tab" id="headingThree">
+                                                        <h6 class="mb-0">
+                                                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">shipping &amp; Returns</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae, tempore maxime rerum iste dolorem mollitia perferendis distinctio. Quibusdam laboriosam rerum distinctio. Repudiandae fugit odit, sequi id!</p>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae qui maxime consequatur laudantium temporibus ad et. A optio inventore deleniti ipsa.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>#}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area End >>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+                        <!-- ****** Quick View Modal Area Start ****** -->
+                        <div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="modal-body">
+                                        <div class="quickview_body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-5">
+                                                        <div class="quickview_pro_img">
+                                                            <img src="img/product-img/product-1.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-7">
+                                                        <div class="quickview_pro_des">
+                                                            <h4 class="title">Boutique Silk Dress</h4>
+                                                            <div class="top_seller_product_rating mb-15">
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                            </div>
+                                                            <h5 class="price">$120.99 <span>$130</span></h5>
+                                                            <p> {{ produit.presentation }} </p>
+                                                            <a href="#">View Full Product Details</a>
+                                                        </div>
+                                                       {# <!-- Add to Cart Form -->
+                                                        <form class="cart" method="post">
+                                                            <div class="quantity">
+                                                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+
+                                                                <input type="number" class="qty-text" id="qty2" step="1" min="1" max="12" name="quantity" value="1">
+
+                                                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                            </div>
+                                                            <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
+                                                            <!-- Wishlist -->
+                                                            <div class="modal_pro_wishlist">
+                                                                <a href="wishlist.html" target="_blank"><i class="ti-heart"></i></a>
+                                                            </div>
+                                                            <!-- Compare -->
+                                                            <div class="modal_pro_compare">
+                                                                <a href="compare.html" target="_blank"><i class="ti-stats-up"></i></a>
+                                                            </div>
+                                                        </form>#}
+
+                                                        {#<div class="share_wf mt-30">
+                                                            <p>Share With Friend</p>
+                                                            <div class="_icon">
+                                                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>#}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ****** Quick View Modal Area End ****** -->
+
+
+
+
+
+
+
+
+
+                        {#<!-- Start Avis-->
+                        <section id="mu-avis">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mu-gallery-area">
+
+                                            <div class="mu-title">
+                                                <span class="mu-subtitle"> </span>
+                                                <h2>  </h2>
+                                            </div>
+                                            <div class="col-md-7 comment-avis" style="float:left">
+                                                <h2 class="comment-h21 comment-border" > Avis </h2>
+                                                {% for a in avis  %}
+                                                    <div class="mu-contact-left">
+                                                        <div>
+                                                            <div class="comment-owner"><i class="fa fa-user" >&nbsp;</i>{{ a.nom }}&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                                            <div class="comment-date"><i class="fa fa-clock-o" >&nbsp;&nbsp; {{ a.createdAt | date("d/m/Y") }}</i></div></div><br>
+                                                        <div><i class="fa fa-quote-left comment-quote" ></i></div>
+                                                        <div class="comment-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ a.avis }} &nbsp;&nbsp;<i class="fa fa-quote-right comment-quote" ></i></div>
+                                                        <hr class="comment-hr" >
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+
+                                            <div class="col-md-7" style="float:left">
+                                                <h2 class="comment-h22" > Laisser un commentaire </h2>
+                                                #}{#<h2 class="comment-h22" > {{ produit.id }} </h2>#}{#
+
+                                                <div class="mu-contact-left">
+                                                    <!-- Email message div -->
+                                                    <div id="form-messages"></div>
+                                                    <!-- Start contact form -->
+                                                     #}{#<form action="{{ path('produit_page',{'id': id }) }} " method="post" enctype="multipart/form-data" >#}{#
+                                                        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                                                        {{ form_row(form._token) }}
+                                                        <div class="form-group">
+                                                            <label for="name">Nom</label>
+                                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email">Email</label>
+                                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message">Avis</label>
+                                                            {{ form_widget(form.avis, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                                        </div>
+
+
+                                                        <button type="submit" class="btn mu-readmore-btn"> Envoyer le commentaire</button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- End Avis-->#}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End About us -->
+
+{% endblock %}

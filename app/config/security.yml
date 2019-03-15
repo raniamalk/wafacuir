@@ -1,0 +1,51 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    role-hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+#    firewalls:
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#
+#        main:
+#             pattern: ^/
+#             form_login:
+#                  provider: fos_userbundle
+#                  login_path:    /login
+#                  check_path:    /login_check
+##                  csrf_provider: form.csrf_provider
+##                  default_target_path: /admin
+#                  csrf_provider: form.csrf_provider
+#                  default_target_path: redemaroc/redeBundle/admin
+#             logout: true
+#             anonymous: true
+
+
+    firewalls:
+
+
+
+            main:
+                pattern: ^/
+                form_login:
+                    provider: fos_userbundle
+                    csrf_provider: form.csrf_provider
+                    default_target_path: /admin
+
+                logout: true
+                anonymous:    true
+
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }

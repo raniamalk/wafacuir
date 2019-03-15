@@ -1,0 +1,70 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - References {% endblock %}
+{% block meta %}
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+    <!-- Start Gallery -->
+    <section id="mu-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-gallery-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle"> Découvrez </span>
+                            <h2> Nos Références </h2>
+                        </div>
+
+                        <div class="mu-gallery-content">
+
+                            <!-- Start gallery image -->
+                            <div class="mu-gallery-body">
+
+                                {% for r in refer %}
+                                    <!-- Start Single Product -->
+                                    <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 product_view">
+                                        <div class="product foo ">
+                                            <div class="product__inner ">
+                                                <div class="pro__thumb">
+                                                        <img style="height: 260px; width:700px" src="{{ asset('uploads/references/' ~ r.path) }}#mu-produit" alt="image de {{ r.quoi }}">
+                                                </div>
+                                                <div class="product__hover__info">
+                                                    <ul class="product__action">
+                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                        <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                                        <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product__details">
+                                                <h2 class="titre_palign" ><a href="#"><span class="titre_p" >{{  r.quoi }}</span></a></h2>
+                                                <span>{{ r.ou }}</span>
+                                                <ul class="product__price">
+                                                    {# <li class="old__price">$16.00</li>
+                                                     <li class="new__price">$10.00</li>#}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+                                <!-- End single gallery image -->
+                                {#{% endfor %}#}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Gallery -->
+
+
+{% endblock %}

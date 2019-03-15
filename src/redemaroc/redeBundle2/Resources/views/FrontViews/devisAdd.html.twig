@@ -1,0 +1,356 @@
+<div class="mu-reservation-content">
+
+    {% if produits|length != 0 %}
+        <div>
+            <p> Veuillez remplir le formulaire pour nous envoyer une demande de devis des produits ci-dessous </p>
+        </div>
+        {% else %}
+
+    {% endif %}
+    <div class="alert alert-success" id="error_msg" role="alert" style="display: none">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" ></span>
+        {#<span class="sr-only">Error:</span>#}
+        Veuillez choisir les produits qui vous interessent avant de nous envoyer le devis
+    </div>
+
+    {#<div class="alert alert-danger" id="error_msg2" role="alert" style="display: none">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" ></span>
+        #}{#<span class="sr-only">Error:</span>#}{#
+        Veuillez choisir les produits qui vous interessent avant de nous envoyer le devis
+    </div>#}
+
+            <div class="span9" >
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+                    <table class="table table-striped table-hover">
+
+                        <tbody>
+                        {% for produit in produits %}
+                            <tr style="display: none">
+                                <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
+                                    <td name="ptitre">{{ produit.titre }}</td>
+                                    <td name="preference">{{ produit.reference }}</td>
+                                    <input name="ref" value="{{ produit.reference }}" style="display: none">
+                                    <td>
+                                        <select name="qte" class="span1" onChange="this.form.submit()">
+                                            {% for i in 1..10 %}
+                                                <option name="pqte" value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                            {% endfor %}
+                                        </select>&nbsp;
+                                    </td>
+                                    <td><a href="{{ path('supprimer', { 'id' : produit.id }) }}"><i class="icon-trash"></i>supprimer</a></td>
+                                </form>
+                            </tr>
+
+                            <div class="div_devis_sum">
+
+                               <li>{# {% if produit.titre is null %}<span class="devis_sum"> Merci de choisir les produits qui vous intéressent </span>{% else %}#}<span class="devis_sum"> {{ produit.titre }} {{ produit.reference }}</span>{#{%endif%}#}</li>
+
+                            </div>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {#<a href="{{ path('produits') }}" class="btn btn-primary">Continuer mes achats</a>#}
+                 </div>
+
+
+        <div class="col-md-6">
+        <div class="mu-reservation-left">
+
+
+
+
+            {#<form action="{{ path('demandedevis_page') }} " method="post" {{ form_enctype(form) }} >
+                {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                {{ form_row(form._token) }}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="devis-label" for="nom">Nom</label>
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="devis-label" for="email">Email</label>
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="devis-label" for="tel">Téléphone</label>
+                            {{ form_widget(form.tel, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="devis-label" for="demande">Demande</label>
+                            {{ form_widget(form.demande, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <button type="submit" class="mu-readmore-btn">Envoyer Devis</button>
+                </div>
+            </form>#}
+
+
+            <form action="{{ path('demandedevis_page') }} " method="post" enctype="multipart/form-data" >
+
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal">
+                                {#<div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Image </label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="file" name="file" id="file">
+                                    </div>
+
+                                </div>#}
+
+                                <div class="form-group row rsbottom">
+                                    <label class="col-sm-3 form-control-label devis-label">Nom </label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control devis" id="inputdefault" name="nom" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row rsbottom">
+                                    <label class="col-sm-6 form-control-label devis-label">Raison social </label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control devis" id="inputdefault" name="raisonsocial" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row rsbottom">
+                                    <label class="col-sm-3 form-control-label devis-label">Adresse </label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control devis" id="inputdefault" name="adresse" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row rsbottom">
+                                    <label class="col-sm-6 form-control-label devis-label">Domaine d'activité </label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control devis" id="inputdefault" name="domaineactivite" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label devis-label">Email </label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control devis" id="inputdefault" name="email" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label devis-label">Téléphone </label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control devis" id="inputdefault" name="telephone" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label devis-label">Demande </label>
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control devis_demande devis" id="inputdemande" name="demande" type="text"></textarea>
+                                    </div>
+                                </div>
+
+
+                                {% if produits|length != 0 %}
+
+                                <div class="form-group row">
+                                    <div class="col-sm-4 offset-sm-3">
+                                        <a href="{{ path('devis_page') }}#mu-reservation" > <span class="devis_link"> <button type="submit" id="error2" class="btn mu-readmore-btn">Envoyer</button></span></a>
+                                    </div>
+                                </div>
+
+                                {% else %}
+
+                                <div class="form-group row">
+                                    <div class="col-sm-4 offset-sm-3">
+                                        <a href="{{ path('devis_page') }}#mu-reservation" > <span class="devis_link"> <button type="button" id="error" class="btn mu-readmore-btn btn-panier">Envoyer</button></span></a>
+
+                                    </div>
+                                 </div>
+
+                                {% endif %}
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="col-md-6{#5 col-md-offset-1#}">
+
+
+
+        <div class="mu-reservation-right">
+            <div class="mu-opening-hour">
+                <h2>Heures d'ouverture</h2>
+                <ul class="list-unstyled">
+                    <li>
+                        <p>du lundi à vendredi</p>
+                        <p>de  8:30   à   5:30</p>
+                    </li>
+                    <li>
+                        <p>Le delai de traitement de votre devis est</p>
+                        <p>5 jours ouvrables</p>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Start Reservation section -->
+{#<section id="mu-reservation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <form action="{{ path('demandedevis_page') }} " method="post" enctype="multipart/form-data" >
+
+                <div class="mu-reservation-area">
+
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Make A</span>
+                        <h2>Reservation</h2>
+                    </div>
+
+                    <div class="mu-reservation-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quidem autem iusto, perspiciatis, amet, quaerat blanditiis ducimus eius recusandae nisi aut totam alias consectetur et.</p>
+
+                        <div class="col-md-6">
+                            <div class="mu-reservation-left">
+                                <form class="mu-reservation-form">
+                                    <div class="form-group row rsbottom">
+                                        <label class="col-sm-3 form-control-label devis-label">Nom </label>
+                                        <div class="col-sm-12">
+                                            <input class="form-control devis" id="inputdefault" name="nom" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 form-control-label devis-label">Email </label>
+                                        <div class="col-sm-12">
+                                            <input class="form-control devis" id="inputdefault" name="email" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 form-control-label devis-label">Téléphone </label>
+                                        <div class="col-sm-12">
+                                            <input class="form-control devis" id="inputdefault" name="telephone" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 form-control-label devis-label">Demande </label>
+                                        <div class="col-sm-12">
+                                            <input class="form-control devis_demande devis" id="inputdefault" name="demande" type="text">
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-4 offset-sm-3">
+                                            <button type="submit" class="btn ">Envoyer</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 #}{#col-md-offset-1#}{#">
+                            <div class="mu-reservation-right">
+                                <div class="mu-opening-hour">
+                                    <h2>Opening Hours</h2>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <p>Monday &amp; Tuesday</p>
+                                            <p>9:00 AM - 4:00 PM</p>
+                                        </li>
+                                        <li>
+                                            <p>Wednesday &amp; Thursday</p>
+                                            <p>9:00 AM - Midnight</p>
+                                        </li>
+                                        <li>
+                                            <p>Friday &amp; Saturday</p>
+                                            <p>9:00 AM - Midnight</p>
+                                        </li>
+                                        <li>
+                                            <p>Sunday</p>
+                                            <p>9:00 AM - 11:00 PM</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form></div>
+        </div>
+    </div>
+</section>#}
+<!-- End Reservation section -->

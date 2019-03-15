@@ -1,0 +1,72 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} Wafacuir - Devis {% endblock %}
+{% block pagetitle %} <h3> Consulter et modifier les devis </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Devis</li>
+        <li class="breadcrumb-item active"><a href="{{ path('devis_list') }}"> Consulter </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+                            <thead >
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th> Nom </th>
+                                <th> Raison social </th>
+                                <th> Email </th>
+                                <th> Telephone </th>
+                                <th> Demande </th>
+                                <th> Produit </th>
+                                <th> Validé </th>
+                            </tr>
+                            </thead>
+
+                            {% for dev in devis %}
+                                <tr>
+                                    <td> <a href="{{ path('devis_edit', {'id' : dev.id}) }}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+                                    <td> <a href="{{ path('devis_delete', {'id' : dev.id}) }}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+                                    <td> {{ dev.nom  }} </td>
+                                    <td> {{ dev.raisonsocial  }} </td>
+                                    <td> {{ dev.email }} </td>
+                                    <td> {{ dev.tel  }} </td>
+                                    <td> {{ dev.demande  }} </td>
+                                    <td>
+                                    {% for pro in dev.panier %}
+                                        <br>
+                                        <ul>
+                                            <li>Produit : {{ pro.tit }}</li>
+                                            <li>Reference : {{ pro.ref }}</li>
+                                            <li>quantité : {{ pro.qte }}</li>
+                                        </ul>
+
+                                    {% endfor %}
+                                    </td>
+                                    <td>{% if dev.publish =='1'%}<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>{% else %}<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>{%endif%}</td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+
+
+{% endblock %}

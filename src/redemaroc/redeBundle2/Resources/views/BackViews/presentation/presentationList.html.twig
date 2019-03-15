@@ -1,0 +1,63 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} RedeMaroc - List {% endblock %}
+{% block pagetitle %} <h3> Consulter et modifier Presentation </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Presentation</li>
+        <li class="breadcrumb-item active"><a href="{{ path('presentation_list') }}"> Consulter </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+
+
+
+
+                            {% for p in presentation %}
+                                <tr>
+                                    <td> Image </td>
+                                    <td> <img alt="pas d'image" src="{{ asset('uploads/presentation/' ~ p.path) }}"  width="200" height="150"> </td>
+                                </tr>
+                                <tr>
+                                    <td> Titre presentation </td>
+                                    <td> {{ p.titrep}} </td>
+                                </tr>
+                                <tr>
+                                    <td> Presentation </td>
+                                    <td> {{ p.presentation |striptags}} </td>
+                                </tr>
+                                <tr>
+                                    <td> Titre 2 </td>
+                                    <td> {{ p.titreda }}  </td>
+                                </tr><tr>
+                                <td> Contenu 2 </td>
+                                <td> {{ p.domaineactivite |striptags}} </td>
+                            </tr>
+
+                                <td><a href="{{ path('presentation_edit', {'id' : p.id}) }}"><span class="btn info" aria-hidden="true"> Modifier </span></a></td>
+
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+
+
+{% endblock %}

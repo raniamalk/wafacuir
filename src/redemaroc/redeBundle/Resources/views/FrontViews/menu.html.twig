@@ -1,0 +1,56 @@
+<!-- Start slider  -->
+<section id="mu-slider">
+    <div class="mu-slider-area">
+
+        <!-- Top slider -->
+        <div class="mu-top-slider">
+            {% for s in slider %}
+            <!-- Top slider single slide -->
+            <div class="mu-top-slider-single">
+                <img src="{{ asset('uploads/slider/' ~ s.path) }}" alt="img">
+
+                <div class="mu-top-slider-content">
+                    <span class="mu-slider-small-title"></span>
+                    <h2 class="mu-slider-title">{{ s.texte }}</h2>
+                    <p></p>
+                   {# <a href="#mu-reservation" class="mu-readmore-btn mu-reservation-btn">BOOK A TABLE</a>#}
+                </div>
+                <!-- Top slider content -->
+{#
+
+                <div class="mu-top-slider-content ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 slider-navbar" >
+                                <!-- column1, Vertical Dropdown Menu -->
+                                <div id="main-menu" class="list-group" style="height: 400px; overflow: auto;">
+
+                                    {% for t in type %}
+                                           <a href="#sub-menu-1{{ t.id }}" class="list-group-item st active hei" data-toggle="collapse"
+                                                data-parent="#main-menu"> {{ t.type }} <span class="caret"></span></a>
+                                                {%  for produit in t.produit %}
+                                                    <div class="collapse list-group-level1" id="sub-menu-1{{ t.id }}">
+                                                    <a href="{{ path('produit_page', {'id' : produit.id}) }}#mu-produit" class="list-group-item nd hei" data-parent="#sub-menu-1{{ t.id }}">{{ produit.titre }}</a>
+                                                    </div>
+                                                {% endfor %}
+                                     {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+#}
+
+                <!-- / Top slider content -->
+            </div>
+            <!-- / Top slider single slide -->
+            {% endfor %}
+
+
+        </div>
+    </div>
+</section>
+<!-- End slider  -->
+
+

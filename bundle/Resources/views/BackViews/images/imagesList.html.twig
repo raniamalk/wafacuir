@@ -1,0 +1,63 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} RedeMaroc - Images {% endblock %}
+{% block pagetitle %} <h3> Consulter et modifier les images </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Image</li>
+        <li class="breadcrumb-item active"><a href="{{ path('images_list') }}"> Consulter </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead >
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th> Titre </th>
+                            <th> Image </th>
+                        </tr>
+                        </thead>
+
+                        {% for i in images %}
+                            <tr>
+                                <td> <a href="{{ path('images_edit', {'id' : i.id}) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> </td>
+                                <td> <a href="{{ path('images_delete', { 'id': i.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                                <td> {{ i.titre | slice(0, 20) ~ ' ...' }} </td>
+                                <td><img alt="pas d'image" src="{{ asset('uploads/images/' ~ i.path) }}"  width="80" height="80"></td>
+
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <td><a href="{{ path('images_add') }}"><span class="btn info" aria-hidden="true"> Ajouter </span></a></td>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
+        } );
+    </script>
+
+{% endblock %}

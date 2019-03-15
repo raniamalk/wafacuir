@@ -1,0 +1,65 @@
+    <!-- Start Avis-->
+<section id="mu-avis">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-gallery-area">
+
+                    <div class="mu-title">
+                        <span class="mu-subtitle"> </span>
+                        <h2>  </h2>
+                    </div>
+                    <div class="col-md-7 comment-avis" style="float:left">
+                        <h2 class="comment-h21 comment-border" > Avis </h2>
+                        <div class="mu-contact-left">
+
+                            <div>
+                                <div class="comment-owner"><i class="fa fa-user" >&nbsp;</i>rania &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="comment-date"><i class="fa fa-clock-o" >&nbsp;</i>08 octobre 2018</div></div><br>
+                            <div><i class="fa fa-quote-left comment-quote" ></i></div>
+                            <div class="comment-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; thanks, you did a good job &nbsp;&nbsp;<i class="fa fa-quote-right comment-quote" ></i></div>
+                            <hr class="comment-hr" >
+                        </div>
+                        <div class="mu-contact-left">
+                            <div>
+                                <div class="comment-owner"><i class="fa fa-user" >&nbsp;</i>amina &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="comment-date"><i class="fa fa-clock-o" >&nbsp;</i>07 octobre 2018</div></div><br>
+                            <div><i class="fa fa-quote-left comment-quote" ></i></div>
+                            <div class="comment-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ca ma fait enormement plaisir d'avoir collaborer avec vous &nbsp;&nbsp;<i class="fa fa-quote-right comment-quote" ></i></div>
+                            <hr class="comment-hr">
+                        </div>
+                    </div>
+
+                    <div class="col-md-7" style="float:left">
+                        <h2 class="comment-h22" > Laisser un commentaire </h2>
+                        {#<h2 class="comment-h22" > {{ produit.id }} </h2>#}
+
+                        <div class="mu-contact-left">
+                            <!-- Email message div -->
+                            <div id="form-messages"></div>
+                            <!-- Start contact form -->
+                            <form action="{{ path('avis_page') }} " method="post" {{ form_enctype(form) }} >
+                                {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                                {{ form_row(form._token) }}
+                                <div class="form-group">
+                                    <label for="name">Nom</label>
+                                    {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Avis</label>
+                                    {{ form_widget(form.avis, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                </div>
+                                <button type="submit" class="mu-send-btn comment-btn"> Envoyer le commentaire</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- End Avis-->

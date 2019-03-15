@@ -1,0 +1,240 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} Wafacuir - Produits {% endblock %}
+{% block meta %}
+        <meta name="keywords" content="{{ produit.metakeywords }}">
+        <meta name="description" content="{{ produit.metadescription }}">
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+<!-- Start About us -->
+<section id="mu-produit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+
+                    <div class="mu-title">
+                        <h2 class="prod-titre">{{ produit.titre }}</h2><br>
+                        <span>{{ produit.reference }}</span>
+                       {# <input name="ref" value="{{ produit.reference }}" #}{#style="display: none"#}{#>#}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 product">
+                            <div class="mu-about-us-left">
+                                <img src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="img" style="min-width: 90%; min-height: 400px;max-height: 500px;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mu-about-us-right">
+
+                                <h2 class="comment-h21" > {{ produit.titre1 }} </h2>
+
+                                <p>
+                                    {{ produit.presentation | raw }}
+                                </p>
+                                {% if panier[produit.id] is not defined %}
+                                    <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
+                                        <select name="qte" class="span1" style="display: none">
+                                            {% for i in 1..10 %}
+                                                <option value="{{ i }}">{{ i }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <input name="ref" id="ref" value="{{ produit.reference }}" style="display: none">
+                                        <input name="tit" id="tit" value="{{ produit.titre }}" style="display: none">
+
+                                        <div>
+                                            <button class="btn mu-readmore-btn pro-add-devis">Ajouter au devis</button>
+                                        </div>
+                                    </form>
+                                {% else %}
+
+                                {% endif %}
+
+                            </div>
+                            {#<input name="" value="{{ produit.reference }}">
+                            <input value="{{ produit.titre }}">
+                            <a class="add_panier" >Ajouter au panier</a>#}
+                        </div>
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="mu-about-us-right">
+                                <h2 class="comment-h21" > {{ produit.titre2 }} </h2>
+                                <p>
+                                    {{ produit.plusinfo | raw }}
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <!-- Start plus d'image -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mu-gallery-area">
+
+
+                                        <div class="mu-gallery-content">
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.patha is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit1/' ~ produit.patha) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit1/' ~ produit.patha) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.pathb is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit2/' ~ produit.pathb) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit2/' ~ produit.pathb) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.pathc is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit3/' ~ produit.pathc) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit3/' ~ produit.pathc) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (produit.pathd is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/produit4/' ~ produit.pathd) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/produit4/' ~ produit.pathd) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                            <!-- end gallery image -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {% if (produit.video|length != 0 ) %}
+                                {# <h2 class="comment-h21 comment-border"> Video</h2>#}
+                                <div {#align="center"#} class="iframe-container" >
+
+                                    <iframe class="video-css" src="https://www.youtube.com/embed/{{ produit.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                            {% endif %}
+
+
+                        </div>
+                        {#</section>#}
+                        <!-- End Gallery -->
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- Start Avis-->
+                        <section id="mu-avis">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mu-gallery-area">
+
+                                            <div class="mu-title">
+                                                <span class="mu-subtitle"> </span>
+                                                <h2>  </h2>
+                                            </div>
+                                            <div class="col-md-7 comment-avis" style="float:left">
+                                                <h2 class="comment-h21 comment-border" > Avis </h2>
+                                                {% for a in avis  %}
+                                                    <div class="mu-contact-left">
+                                                        <div>
+                                                            <div class="comment-owner"><i class="fa fa-user" >&nbsp;</i>{{ a.nom }}&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                                            <div class="comment-date"><i class="fa fa-clock-o" >&nbsp;&nbsp; {{ a.createdAt | date("d/m/Y") }}</i></div></div><br>
+                                                        <div><i class="fa fa-quote-left comment-quote" ></i></div>
+                                                        <div class="comment-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ a.avis }} &nbsp;&nbsp;<i class="fa fa-quote-right comment-quote" ></i></div>
+                                                        <hr class="comment-hr" >
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+
+                                            <div class="col-md-7" style="float:left">
+                                                <h2 class="comment-h22" > Laisser un commentaire </h2>
+                                                {#<h2 class="comment-h22" > {{ produit.id }} </h2>#}
+
+                                                <div class="mu-contact-left">
+                                                    <!-- Email message div -->
+                                                    <div id="form-messages"></div>
+                                                    <!-- Start contact form -->
+                                                     {#<form action="{{ path('produit_page',{'id': id }) }} " method="post" enctype="multipart/form-data" >#}
+                                                        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                                                        {{ form_row(form._token) }}
+                                                        <div class="form-group">
+                                                            <label for="name">Nom</label>
+                                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email">Email</label>
+                                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message">Avis</label>
+                                                            {{ form_widget(form.avis, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                                        </div>
+
+
+                                                        <button type="submit" class="btn mu-readmore-btn"> Envoyer le commentaire</button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- End Avis-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End About us -->
+
+{% endblock %}

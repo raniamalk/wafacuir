@@ -1,0 +1,156 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - References {% endblock %}
+{% block meta %}
+       {# <meta name="keywords" content="{{ produit.metakeywords }}">
+        <meta name="description" content="{{ produit.metadescription }}">#}
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+    <style>
+
+    </style>
+
+<!-- Start About us -->
+<section id="mu-produit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+
+                   {# <div class="mu-title">
+                        <h2 class="prod-titre">{{ refer.ou }}</h2><br>
+                      #}{#  <span>{{ produit.reference }}</span>#}{#
+                       #}{# <input name="ref" value="{{ produit.reference }}" #}{##}{#style="display: none"#}{##}{#>#}{#
+                    </div>#}
+
+                    <div class="row">
+                        <div class="col-md-12 product">
+                            <div class="mu-about-us-leftt">
+                                <img class="img-responsive center-block" src="{{ asset('uploads/references/' ~ refer.path) }}" alt="img">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="mu-about-us-right" style="margin-top: 30px;">
+                                <h2 class="comment-h21 text-description" > {{ refer.ou }} </h2>
+                                <p class="text-description">
+                                    {{ refer.description | raw }}
+                                </p>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="mu-about-us-right" style="margin-top: 30px;">
+                                <h2 class="comment-h21 text-description" > {{ refer.quoi }} </h2>
+                                <p class="text-description">
+                                    {{ refer.realisation | raw }}
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <!-- Start plus d'image -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mu-gallery-area">
+
+
+                                        <div class="mu-gallery-content">
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (refer.patha is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/ref1/' ~ refer.patha) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/ref1/' ~ refer.patha) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (refer.pathb is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/ref2/' ~ refer.pathb) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/ref2/' ~ refer.pathb) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (refer.pathc is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/ref3/' ~ refer.pathc) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/ref3/' ~ refer.pathc) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 product">
+                                                <div class="mu-about-us-left">
+                                                    {% if (refer.pathd is not null) %}
+                                                        <a class="mu-imglink" href="{{ asset('uploads/ref4/' ~ refer.pathd) }}">
+                                                            <img class="img-secondaires" alt="img" src="{{ asset('uploads/ref4/' ~ refer.pathd) }}">
+                                                            <div class="mu-single-gallery-info">
+                                                                <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                            </div>
+                                                        </a>
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {% if (refer.pathe|length != 0 ) %}
+
+                                {#<div align="center" class="iframe-container" >
+
+                                    <iframe class="video-css" src="https://www.youtube.com/embed/{{ produit.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>#}
+
+                                <div class="alert alert-info">
+                                    <a href="{{ asset('uploads/refdoc/' ~ refer.pathe) }}" target="_blank"><strong>Document</strong> {{ refer.ou }}</a>
+                                </div>
+
+                            {% else %}
+                            {% endif %}
+
+
+                        </div>
+
+                        {#</section>#}
+                        <!-- End Gallery -->
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End About us -->
+
+{% endblock %}

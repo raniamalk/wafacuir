@@ -1,0 +1,154 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - Produit {% endblock %}
+{% block meta %}
+        <meta name="keywords" content="{{ produit.metakeywords }}">
+        <meta name="description" content="{{ produit.metadescription }}">
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+<!-- Start About us -->
+<section id="mu-produit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+
+                    <div class="mu-title">
+                        <h2>{{ produit.titre }}</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 product">
+                            <div class="mu-about-us-left">
+                                <img src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="img">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mu-about-us-right">
+
+
+                                <h2 class="comment-h21" > {{ produit.titre1 }} </h2>
+                                <p>
+                                    {{ produit.presentation | raw }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mu-about-us-right">
+                                <h2 class="comment-h21" > {{ produit.titre2 }} </h2>
+                                <p>
+                                    {{ produit.plusinfo | raw }}
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <!-- Start plus d'image -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mu-gallery-area">
+
+
+                                        <div class="mu-gallery-content">
+
+                                            <!-- Start gallery image -->
+                                            <div class="mu-gallery-body">
+                                                <!-- start single gallery image -->
+                                                <div class="mu-single-gallery products col-md-3">
+                                                    <div class="mu-single-gallery-item">
+                                                        <figure class="mu-single-gallery-img">
+                                                            {% if (produit.patha is not null) %}
+                                                                <a class="mu-imglink" href="{{ asset('uploads/produit1/' ~ produit.patha) }}">
+                                                                    <img alt="img" src="{{ asset('uploads/produit1/' ~ produit.patha) }}">
+                                                                    <div class="mu-single-gallery-info">
+                                                                        <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                                    </div>
+                                                                </a>
+                                                            {% else %}
+                                                            {% endif %}
+
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <!-- End single gallery image -->
+
+                                                <!-- start single gallery image -->
+                                                <div class="mu-single-gallery products col-md-3">
+                                                    <div class="mu-single-gallery-item">
+                                                        <figure class="mu-single-gallery-img">
+                                                            {% if (produit.pathb is not null) %}
+                                                                <a class="mu-imglink" href="{{ asset('uploads/produit2/' ~ produit.pathb) }}">
+                                                                    <img alt="img" src="{{ asset('uploads/produit2/' ~ produit.pathb) }}">
+                                                                    <div class="mu-single-gallery-info">
+                                                                        <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                                    </div>
+                                                                </a>
+                                                            {% else %}
+                                                            {% endif %}
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <!-- End single gallery image -->
+
+                                                <!-- start single gallery image -->
+                                                <div class="mu-single-gallery products col-md-3">
+                                                    <div class="mu-single-gallery-item">
+                                                        <figure class="mu-single-gallery-img">
+                                                            {% if (produit.pathc is not null) %}
+                                                                <a class="mu-imglink" href="{{ asset('uploads/produit3/' ~ produit.pathc) }}">
+                                                                    <img alt="img" src="{{ asset('uploads/produit3/' ~ produit.pathc) }}">
+                                                                    <div class="mu-single-gallery-info">
+                                                                        <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                                    </div>
+                                                                </a>
+                                                            {% else %}
+                                                            {% endif %}
+
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <!-- End single gallery image -->
+
+                                                <!-- start single gallery image -->
+                                                <div class="mu-single-gallery products col-md-3">
+                                                    <div class="mu-single-gallery-item">
+                                                        <figure class="mu-single-gallery-img">
+                                                            {% if (produit.pathd is not null) %}
+                                                                <a class="mu-imglink" href="{{ asset('uploads/produit4/' ~ produit.pathd) }}">
+                                                                    <img alt="img" src="{{ asset('uploads/produit4/' ~ produit.pathd) }}">
+                                                                    <div class="mu-single-gallery-info">
+                                                                        <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                                    </div>
+                                                                </a>
+                                                            {% else %}
+                                                            {% endif %}
+
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <!-- End single gallery image -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {#</section>#}
+                        <!-- End Gallery -->
+                        {% render(controller('redeBundle:avis:add'))%}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End About us -->
+
+{% endblock %}

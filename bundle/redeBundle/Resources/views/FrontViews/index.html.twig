@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}{% endblock %}
+    <title> {% block title %} RedeMaroc {% endblock %} </title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('BackEnd/asset/img/favicon.ico')}}">
+    <!-- Font awesome -->
+    <link href="{{ asset('FrontEnd/assets/css/font-awesome.css') }}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{{ asset('FrontEnd/assets/css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/slick.css') }}">
+    <!-- Date Picker -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/bootstrap-datepicker.css') }}">
+    <!-- Gallery Lightbox -->
+    <link href="{{ asset('FrontEnd/assets/css/magnific-popup.css') }}" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="{{ asset('FrontEnd/assets/css/theme-color/default-theme.css') }}" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="{{ asset('FrontEnd/style.css') }}" rel="stylesheet">
+
+    <!-- animate style sheet -->
+    <link href="{{ asset('FrontEnd/animate.css') }}" rel="stylesheet">
+
+
+    <!-- Google Fonts -->
+
+    <!-- Prata for body  -->
+    <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
+    <!-- Tangerine for small title -->
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+    <!-- Open Sans for title -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- collapse -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<!--START SCROLL TOP BUTTON -->
+<a class="scrollToTop" href="#">
+    <i class="fa fa-angle-up"></i>
+</a>
+<!-- END SCROLL TOP BUTTON -->
+
+
+
+<!-- Start header section -->
+<header id="mu-header" style="position: relative">
+    <nav class="navbar navbar-default mu-main-navbar" role="navigation">
+        <div class="container">
+            <div {#class="col-md-1 col-sm-1 col-xs-1"#} style="float: right;">
+                <button type="button" name="button" id="search-icone"><i class="glyphicon glyphicon-search"></i></button>
+
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-1" style="float: right" >
+                <button type="button" name="button" id="panier-icone"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+            </div>
+            <div class="navbar-header">
+
+                <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- LOGO -->
+
+                <!--  Text based logo  -->
+                <a class="navbar-brand" href="{{ path('rede_homepage') }}"><img class="img_logo" src="{{ asset('FrontEnd/assets/img/logo.jpg') }}" alt="Logo img"></a>
+
+                <!--  Image based logo  -->
+                <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="Logo img"></a>  -->
+
+
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
+                    <li class="li-menu"><a href="{{ path('rede_homepage') }}">ACCEUIL</a></li>
+                    <li class="li-menu"><a href="{{ path('presentation_page') }}">QUI SOMMES-NOUS?</a></li>
+                    <li>
+                        {#<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"> NOS PRODUITS <span class="caret"></span></button>#}
+                        <a class="li-menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NOS PRODUITS</a>
+                        <ul class="dropdown-menu menu-prod">
+                                <li><a tabindex="-1" href="{{ path('catalogue_page') }}"> Tous les produits </a></li>
+                                {% for t in type %}
+                                    <li class="dropdown-submenu">
+                                        <a class="test" tabindex="-1" href="#">{{ t.type }} <span class="caret"></span></a>
+                                        <ul class="dropdown-menu sous-menu-prod">
+                                            {%  for produit in t.produit %}
+                                                <li><a tabindex="-1" href="{{ path('produit_page', {'id' : produit.id}) }}">{{ produit.titre }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="li-menu"><a href="{{ path('references_page') }}">NOS REFERENCES</a></li>
+                    <li class="li-menu"><a href="{{ path('galerie_page') }}">GALERIE</a></li>
+                    <li class="li-menu"><a href="{{ path('documentation_page') }}">DOCUMENTATION</a></li>
+                    <li class="li-menu"><a href="{{ path('devis_page') }}#">DEMANDER DEVIS</a></li>
+                    {#<li class="li-menu"><a href="#" >E-COMMERCE</a></li>#}
+                    <li class="li-menu"><a href="{{ path('rede_homepage') }}#mu-contact">CONTACT</a></li>
+                    {# {% render(controller('redeBundle:Default:recherche')) %} #}
+                </ul>
+            </div>
+            {#<div class="col-md-1 col-sm-1 col-xs-1" style="float: right;">
+                <button type="button" name="button" id="search-icone"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+
+            <div class="col-md-1 col-sm-1 col-xs-1">
+                <button type="button" name="button" id="panier-icone"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+            </div>#}
+            {% render(controller('redeBundle:Default:recherche')) %}
+            {% render(controller('redeBundle:Default:panier')) %}
+        </div>
+    </nav>
+
+</header>
+<!-- End header section -->
+
+
+
+{% block slider %}
+
+{% render(controller('redeBundle:Default:firstlevel'))%}
+
+{% endblock %}
+
+
+{% block body %}
+
+    {% for h in home %}
+        <!-- Start petit Mot -->
+        <section id="mu-restaurant-menu">
+            <div class="container test2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-chef-area">
+
+                            <div class="mu-title">
+                                <span class="mu-subtitle"> {{ h.titre }} </span>
+                                <h2> {{ h.titresuite }}</h2>
+                            </div>
+
+                            <div class="mu-chef-content">
+                                <p> {{ h.texte | striptags }} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End petit Mot -->
+
+
+        <!-- Start Counter Section -->
+        <section id="mu-counter">
+            <div class="mu-counter-overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-counter-area">
+
+                                <ul class="mu-counter-nav">
+
+                                    {#<li class="col-md-3 col-sm-3 col-xs-12">#}
+                                    {#<div class="mu-single-counter">#}
+                                    {#<span>Fresh</span>#}
+                                    {#<h3><span class="counter-value" data-count="150">0</span><sup>+</sup></h3>#}
+                                    {#<p>Breakfast Items</p>#}
+                                    {#</div>#}
+                                    {#</li>#}
+
+                                    <li class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="mu-single-counter">
+                                            {#<span>Delicious</span>#}
+                                            <h3><span class="counter-value" data-count="{{ h.val1 }}">0</span><sup>+</sup></h3>
+                                            <p> {{ h.texte1 }} </p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="mu-single-counter">
+                                            {#<span>Hot</span>#}
+                                            <h3><span class="counter-value" data-count="{{ h.val2 }}">0</span><sup>+</sup></h3>
+                                            <p> {{ h.texte2 }} </p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="mu-single-counter">
+
+                                            <h3><span class="counter-value" data-count="{{ h.val3 }}">0</span><sup>+</sup></h3>
+                                            <p> {{ h.texte3 }} </p>
+                                            {#<span>Satisfied</span>#}
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Counter Section -->
+
+
+      {#  <div class="how-section1">
+        <div class="how-section111">
+            <div class="col-md-6 how-img">
+                <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+            </div>
+            <div class="col-md-6">
+                <h4>Find rewarding projects</h4>
+                <h4 class="subheading">GetLance is a great place to find more clients, and to run and grow your own freelance business.</h4>
+                <p class="text-muted">Freedom to work on ideal projects. On GetLance, you run your own business and choose your own clients and projects. Just complete your profile and we’ll highlight ideal jobs. Also search projects, and respond to client invitations.
+                    Wide variety and high pay. Clients are now posting jobs in hundreds of skill categories, paying top price for great work.
+                    More and more success. The greater the success you have on projects, the more likely you are to get hired by clients that use GetLance.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Get hired quickly</h4>
+                <h4 class="subheading">GetLance makes it easy to connect with clients and begin doing great work.</h4>
+                <p class="text-muted">Streamlined hiring. GetLance’s sophisticated algorithms highlight projects you’re a great fit for.
+                    Top Rated and Rising Talent programs. Enjoy higher visibility with the added status of prestigious programs.
+                    Do substantial work with top clients. GetLance pricing encourages freelancers to use GetLance for repeat relationships with their clients.</p>
+            </div>
+            <div class="col-md-6 how-img">
+                <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle img-fluid" alt=""/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 how-img">
+                <img src="https://image.ibb.co/ctSLu9/Work_Section2_freelance_img3.png" class="rounded-circle img-fluid" alt=""/>
+            </div>
+            <div class="col-md-6">
+                <h4>Work efficiently, effectively.</h4>
+                <h4 class="subheading">With GetLance, you have the freedom and flexibility to control when, where, and how you work. Each project includes an online workspace shared by you and your client, allowing you to:</h4>
+                <p class="text-muted">Send and receive files. Deliver digital assets in a secure environment.
+                    Share feedback in real time. Use GetLance Messages to communicate via text, chat, or video.
+                    Use our mobile app. Many features can be accessed on your mobile phone when on the go.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Get paid on time</h4>
+                <h4 class="subheading">All projects include GetLance Payment Protection — helping ensure that you get paid for all work successfully completed through the freelancing website.</h4>
+                <p class="text-muted">All invoices and payments happen through GetLance. Count on a simple and streamlined process.
+                    Hourly and fixed-price projects. For hourly work, submit timesheets through GetLance. For fixed-price jobs, set milestones and funds are released via GetLance escrow features.
+                    Multiple payment options. Choose a payment method that works best for you, from direct deposit or PayPal to wire transfer and more.</p>
+            </div>
+            <div class="col-md-6 how-img">
+                <img src="https://image.ibb.co/gQ9iE9/Work_Section2_freelance_img4.png" class="rounded-circle img-fluid" alt=""/>
+            </div>
+        </div>
+    </div>#}
+
+
+        <!-- Start nos references -->
+        <section id="mu-reference">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-chef-area">
+
+                            <div class="mu-title">
+                                <span class="mu-subtitle"> Une sélection </span>
+                                <h2> de nos Références </h2>
+                            </div>
+
+
+                            <div class="mu-chef-content">
+                                <ul class="mu-chef-nav">
+                                    {% for r in refer %}
+                                        <li>
+                                            <div class="mu-single-chef">
+                                                <figure class="mu-single-chef-img">
+                                                    <img src="{{ asset('uploads/references/' ~ r.path) }}" alt="chef img">
+                                                </figure>
+                                                <div class="mu-single-chef-info">
+                                                    <h4>{{ r.quoi }}</h4>
+                                                    <span>{{ r.ou }}</span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End nos references -->
+
+        <!-- Start nos partenaires -->
+        <section id="mu-partenaire">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-chef-area">
+
+                            <div class="mu-title">
+                                <span class="mu-subtitle"> Une sélection </span>
+                                <h2> de nos Partenaires </h2>
+                            </div>
+
+
+                            <div class="mu-chef-content">
+                                <ul class="mu-chef-nav">
+                                    {% for p in partenaire %}
+                                        <li>
+                                            <div class="mu-single-chef">
+                                                <figure class="mu-partenaire">
+                                                    <img src="{{ asset('uploads/partenaires/' ~ p.path) }}" alt="image de {{ p.titre }}">
+                                                </figure>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End nos partenaires -->
+
+
+
+
+        {% render(controller('redeBundle:contact:add'))%}
+
+
+        <!-- Start Map section -->
+        <section id="mu-map">
+            {#<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-7.589557170867921%2C33.580347676945%2C-7.5788283348083505%2C33.58690814811236&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/33.58363/-7.58419&amp;layers=N">Afficher une carte plus grande</a></small>#}
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.843421779857!2d-7.585684684538351!3d33.58341444973695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd3c32499457%3A0xf4245cf7e8b297f3!2sREDEMAROC!5e0!3m2!1sen!2sma!4v1541435065586" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </section>
+        <!-- End Map section -->
+    {% endfor %}
+{% endblock %}
+
+{% for h in home %}
+<!-- Start Footer -->
+<footer id="mu-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-footer-area">
+                    <div class="mu-footer-social">
+                        <a href="{{ h.facebook }}" target="_blank"><span class="fa fa-facebook"></span></a>
+                        {#<a href="#"><span class="fa fa-twitter"></span></a>#}
+                        {#<a href="#"><span class="fa fa-google-plus"></span></a>#}
+                        <a href="{{ h.linkedin }}" target="_blank"><span class="fa fa-linkedin"></span></a>
+                        <a href="{{ h.youtube }}" target="_blank"><span class="fa fa-youtube"></span></a>
+                    </div>
+                    <div class="mu-footer-copyright">
+                        <p>&copy; Copyright <a rel="nofollow" href="https://www.telecontact.ma" target="_blank">TELECONTACT</a>. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+{% endfor %}
+
+<!-- jQuery library -->
+<script src="{{ asset('FrontEnd/assets/js/jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('FrontEnd/assets/js/bootstrap.js') }}"></script>
+<!-- Slick slider -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/slick.js') }}"></script>
+<!-- Counter -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/simple-animated-counter.js') }}"></script>
+<!-- Gallery Lightbox -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/jquery.magnific-popup.min.js') }}"></script>
+<!-- Date Picker -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/bootstrap-datepicker.js') }}"></script>
+<!-- Ajax contact form  -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/app.js') }}"></script>
+
+<!-- Custom js -->
+<script src="{{ asset('FrontEnd/assets/js/custom.js') }}"></script>
+{% block javascripts %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $("#search-icone").click(function(){
+                $("#search-bar").toggle();
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $("#panier-icone").click(function(){
+                $("#panier-bar").toggle();
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $("#error").click(function(){
+                $("#error_msg").show();
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.dropdown-submenu a.test').on("click", function(e){
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+    </script>
+    <script>
+        /*$(function () {
+            $(a.button).on('click',function(){
+                $('input[name=x]').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                function () {
+                    $(this).removeClass('animated shake');
+                });
+            });
+        });*/
+
+        $(function () {
+            $(".test2").mouseenter(function(){
+                $(this).addClass('animated slideInUp')/*.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                    function () {
+                        $(this).removeClass('animated fadeInLeft');
+                    });*/
+            });
+        });
+
+
+    </script>
+
+{% endblock %}
+
+</body>
+</html>

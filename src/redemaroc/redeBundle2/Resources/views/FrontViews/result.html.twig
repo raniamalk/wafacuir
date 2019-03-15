@@ -1,0 +1,385 @@
+{#{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} Wafacuir - Resultat de recherche {% endblock %}
+{% block body %}#}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}{% endblock %}
+    <title> {% block title %} RedeMaroc {% endblock %} </title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('BackEnd/asset/img/favicon.ico')}}">
+    <!-- Font awesome -->
+    <link href="{{ asset('FrontEnd/assets/css/font-awesome.css') }}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{{ asset('FrontEnd/assets/css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/slick.css') }}">
+    <!-- Date Picker -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/bootstrap-datepicker.css') }}">
+    <!-- Gallery Lightbox -->
+    <link href="{{ asset('FrontEnd/assets/css/magnific-popup.css') }}" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="{{ asset('FrontEnd/assets/css/theme-color/default-theme.css') }}" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="{{ asset('FrontEnd/style.css') }}" rel="stylesheet">
+
+    <!-- Google Fonts -->
+
+    <!-- Prata for body  -->
+    <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
+    <!-- Tangerine for small title -->
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+    <!-- Open Sans for title -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- collapse -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<!--START SCROLL TOP BUTTON -->
+<a class="scrollToTop" href="#">
+    <i class="fa fa-angle-up"></i>
+</a>
+<!-- END SCROLL TOP BUTTON -->
+
+
+
+<!-- Start header section -->
+<header id="mu-header" style="position: relative">
+    <nav class="navbar navbar-default mu-main-navbar" role="navigation">
+        <div class="container" >
+            <div class="navbar-header">
+                <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- LOGO -->
+
+                <!--  Text based logo  -->
+                <a class="navbar-brand" href="{{ path('rede_homepage') }}"><img src="{{ asset('FrontEnd/assets/img/logo.png') }}" alt="Logo img"></a>
+
+                <!--  Image based logo  -->
+                <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="Logo img"></a>  -->
+
+
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
+                    <li><a href="{{ path('rede_homepage') }}">ACCEUIL</a></li>
+                    <li><a href="{{ path('presentation_page') }}#mu-about-us">QUI SOMMES-NOUS?</a></li>
+                    <li><a href="{{ path('catalogue_page') }}#mu-catalogue">NOS PRODUITS</a></li>
+                    <li><a href="{{ path('rede_homepage') }}#mu-reference">NOS REFERENCES</a></li>
+                    <li><a href="{{ path('galerie_page') }}#mu-gallery">GALERIE</a></li>
+                    <li><a href="{{ path('documentation_page') }}#mu-produit">DOCUMENTATION</a></li>
+                    <li><a href="{{ path('devis_page') }}#mu-reservation">DEMANDER DEVIS</a></li>
+                    <li><a href="#">E-COMMERCE</a></li>
+                    <li><a href="{{ path('rede_homepage') }}#mu-contact">CONTACT</a></li>
+                    {#<form class="navbar-form navbar-right" method="get" action="{{ path('produit_recherche') }}">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" ><i class="fa fa-search"></i></button>
+                    </form>#}
+                    {#{% render(controller('redeBundle:Default:recherche')) %}#}
+                </ul>
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-1">
+                <button type="button" name="button" id="search-icone"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+
+            <div class="col-md-1 col-sm-1 col-xs-1">
+                <button type="button" name="button" id="panier-icone"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+            </div>
+            {% render(controller('redeBundle:Default:recherche')) %}
+            {% render(controller('redeBundle:Default:panier')) %}
+
+
+        </div>
+    </nav>
+
+</header>
+
+
+
+
+
+
+
+   {# <!-- Start Restaurant Menu -->
+    <section id="mu-catalogue">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-restaurant-menu-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle">Résultat</span>
+                            <h2>de votre recherche</h2>
+                        </div>
+
+                        <div class="mu-restaurant-menu-content">
+
+
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="produit_search">
+                                    <div class="mu-tab-content-area">
+                                        <div class="row">
+                                    {%  for produit in produit %}
+                                            <div class="col-md-6">
+                                                <div class="mu-tab-content-left">
+                                                    <ul class="mu-menu-item-nav">
+                                                        <li>
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <a href="#">
+                                                                        <img class="media-object" src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="img">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="media-heading"><a href="{{ path('produit_page', {'id' : produit.id}) }}">{{ produit.titre }}</a></h4>
+                                                                    <p>{{ produit.presentation |striptags | slice(0, 100) }}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <section class="products">
+
+                                                                <div class="product-card">
+                                                                    <div class="product-image">
+                                                                        <img src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}">
+                                                                    </div>
+                                                                    <div class="product-info">
+                                                                        <h4>{{ produit.titre }}</h4>
+                                                                        <p>{{ produit.presentation |striptags | slice(0, 100) }} <p>
+                                                                    </div>
+                                                                </div>
+
+                                                            </section>
+
+                                                        <li>
+                                                            <div class="mu-single-chef">
+                                                                <figure class="mu-single-chef-img">
+                                                                    <img src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="chef img">
+                                                                </figure>
+                                                                <div class="mu-single-chef-info">
+                                                                    <h4>{{ produit.titre }}</h4>
+                                                                    <span>{{ produit.presentation |striptags | slice(0, 100) }}</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                    {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Restaurant Menu -->#}
+
+
+<section id="mu-catalogue">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-restaurant-menu-area">
+
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Résultat</span>
+                        <h2>de votre recherche</h2>
+                    </div>
+
+                    <div class="mu-restaurant-menu-content">
+                        {#{% for t in type %}
+                        <ul class="nav nav-tabs mu-restaurant-menu">
+
+                            <li class="active"><a href="#{{ t.type }}" data-toggle="tab">{{ t.type }}</a></li>
+
+                        </ul>
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="{{ t.type }}">
+                                <div class="mu-tab-content-area">
+                                    #}{#<div class="row">
+                                {%  for produit in t.produit %}
+                                        <div class="col-md-6">
+                                            <div class="mu-tab-content-left">
+                                                <ul class="mu-menu-item-nav">
+                                                    <li>
+                                                        <div class="media">
+                                                            <div class="media-left">
+                                                                <a href="#">
+                                                                    <img class="media-object" src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="img">
+                                                                </a>
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h4 class="media-heading"><a href="{{ path('produit_page', {'id' : produit.id}) }}">{{ produit.titre }}</a></h4>
+                                                                <p>{{ produit.presentation |striptags | slice(0, 100) }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                {% endfor %}
+                                    </div>#}{#
+
+                                    <div class="row">
+                                        <div class="product__list another-product-style">#}
+
+                        {%  for produit in produit %}
+                            <!-- Start Single Product -->
+                            <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 product_view">
+                                <div class="product foo ">
+                                    <div class="product__inner ">
+                                        <div class="pro__thumb">
+                                            <a href="{{ path('produit_page', {'id' : produit.id}) }}">
+                                                <img style="height: 260px" src="{{ asset('uploads/produitPrincipale/' ~ produit.path) }}" alt="image de {{ produit.titre }}">
+                                            </a>
+                                        </div>
+                                        <div class="product__hover__info">
+                                            <ul class="product__action">
+                                                {# <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                 <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                                 <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>#}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product__details">
+                                        <h2 class="titre_palign" ><a href="{{ path('produit_page', {'id' : produit.id}) }}"><span class="titre_p" >{{  produit.titre }}</span></a></h2>
+                                        <ul class="product__price">
+                                            {# <li class="old__price">$16.00</li>
+                                             <li class="new__price">$10.00</li>#}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                        <!-- End Single Product -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    {#{% endfor %}#}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- Start Footer -->
+<footer id="mu-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-footer-area">
+                    <div class="mu-footer-social">
+                        <a href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+                        {#<a href="#"><span class="fa fa-twitter"></span></a>#}
+                        {#<a href="#"><span class="fa fa-google-plus"></span></a>#}
+                        <a href="#" target="_blank"><span class="fa fa-linkedin"></span></a>
+                        <a href="#" target="_blank"><span class="fa fa-youtube"></span></a>
+                    </div>
+                    <div class="mu-footer-copyright">
+                        <p>&copy; Copyright <a rel="nofollow" href="https://www.telecontact.ma" target="_blank">TELECONTACT</a>. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+{#{% endfor %}#}
+
+<!-- jQuery library -->
+<script src="{{ asset('FrontEnd/assets/js/jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('FrontEnd/assets/js/bootstrap.js') }}"></script>
+<!-- Slick slider -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/slick.js') }}"></script>
+<!-- Counter -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/simple-animated-counter.js') }}"></script>
+<!-- Gallery Lightbox -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/jquery.magnific-popup.min.js') }}"></script>
+<!-- Date Picker -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/bootstrap-datepicker.js') }}"></script>
+<!-- Ajax contact form  -->
+<script type="text/javascript" src="{{ asset('FrontEnd/assets/js/app.js') }}"></script>
+
+<!-- Custom js -->
+<script src="{{ asset('FrontEnd/assets/js/custom.js') }}"></script>
+{% block javascripts %}
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $("#search-icone").click(function(){
+                $("#search-bar").toggle();
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $("#panier-icone").click(function(){
+                $("#panier-bar").toggle();
+            });
+        });
+
+    </script>
+
+{% endblock %}
+
+</body>
+</html>
+
+
+
+
+{#
+{% endblock %}#}

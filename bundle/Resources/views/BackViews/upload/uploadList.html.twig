@@ -1,0 +1,65 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} RedeMaroc - List {% endblock %}
+{% block pagetitle %} <h3> Consulter et modifier un document </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Document</li>
+        <li class="breadcrumb-item active"><a href="{{ path('upload_list') }}"> Consulter </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+                            <thead >
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Document</th>
+
+                            </tr>
+                            </thead>
+
+                            {% for u in upload %}
+                                <tr>
+                                    <td> <a href="{{ path('upload_edit', {'id' : u.id}) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> </td>
+                                    <td> <a href="{{ path('upload_delete', { 'id': u.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                                    <td>
+                                      {#  <img alt="pas d'image" src="{{ asset('uploads/documents/' ~ u.path) }}"  width="80" height="80">
+
+                                        <object type="application/pdf" width="100%" height="100%">
+                                            <param name="src" value="{{ asset('uploads/documents/' ~ u.path) }}" />
+
+                                            <p>It appears your Web browser is not configured to display PDF files.
+                                                No worries, just <a href="{{ asset('uploads/documents/' ~ u.path) }}">click here to download the PDF file.</a>
+                                            </p>
+
+                                        </object>#}
+                                        <a href="{{ asset('uploads/documents/' ~ u.path) }}" target="_blank">{{ u.titre }}</a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    <td><a href="{{ path('upload_add') }}"><span class="btn info" aria-hidden="true"> Ajouter </span></a></td>
+
+    </div>
+
+
+
+{% endblock %}

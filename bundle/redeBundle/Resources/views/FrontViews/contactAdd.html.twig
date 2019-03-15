@@ -1,0 +1,103 @@
+    <!-- Start Contact section -->
+    <section id="mu-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-contact-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle">Entrer en contact</span>
+                            <h2>nous contacter</h2>
+                        </div>
+
+                        <div class="mu-contact-content">
+                            <div class="row">
+
+
+
+                                <div class="col-md-6">
+                                    <div class="mu-contact-left">
+                                        <!-- Email message div -->
+                                        <div id="form-messages"></div>
+                                        <!-- Start contact form -->
+
+                                        <form action="{{ path('contact_page') }} " method="post" {{ form_enctype(form) }} >
+                                            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                                            {{ form_row(form._token) }}
+
+
+                                            <div class="form-group">
+                                                <label for="name">Votre Nom</label>
+                                                {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Raison social</label>
+                                                {{ form_widget(form.raisonsocial, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Adresse</label>
+                                                {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Domaine d’activité</label>
+                                                {{ form_widget(form.domaineactivite, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Téléphone</label>
+                                                {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Email</label>
+                                                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Objet</label>
+                                                {{ form_widget(form.objet, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject">Document</label>
+                                                {{ form_widget(form.file, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Message</label>
+                                                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                                            </div>
+                                            <button type="submit" class="mu-send-btn">Envoyer le message</button>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mu-contact-right">
+                                        <div class="mu-contact-widget">
+                                            <h3>Addresse</h3>
+                                            <p> 11, Rue Louis FERRET, Aïn-Borja, Casablanca. </p>
+                                            <address>
+                                                <p><i class="fa fa-phone"></i> 00212 661 412111 </p>
+                                                <p><i class="fa fa-phone"></i> 00212 662 152206 </p>
+                                                <p><i class="fa fa-phone"></i> 00212 662 708400 </p>
+                                                <p><i class="fa fa-envelope-o"></i>info@redemaroc.com</p>
+                                                {#<p><i class="fa fa-map-marker"></i>368 St. Panama City, Florida, USA</p>#}
+                                            </address>
+                                        </div>
+                                        {#<div class="mu-contact-widget">#}
+                                        {#<h3>Open Hours</h3>#}
+                                        {#<address>#}
+                                        {#<p><span>Monday - Friday</span> 9.00 am to 12 pm</p>#}
+                                        {#<p><span>Saturday</span> 9.00 am to 10 pm</p>#}
+                                        {#<p><span>Sunday</span> 10.00 am to 12 pm</p>#}
+                                        {#</address>#}
+                                        {#</div>#}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact section -->
+

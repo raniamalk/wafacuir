@@ -1,0 +1,58 @@
+{% extends 'redeBundle::BackViews/index.html.twig' %}
+{% block title %} RedeMaroc - Images {% endblock %}
+{% block pagetitle %} <h3> Modifier une image </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Image</li>
+        <li class="breadcrumb-item active"><a href="{{ path('images_edit' ,{'id': ids }) }}"> Modifier </a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <form action="{{ path('images_edit',{'id': ids }) }} " method="post" enctype="multipart/form-data" >
+        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+        {{ form_row(form._token) }}
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal">
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label"> Image </label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.file, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label"> Titre </label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-3">
+                                <button type="submit" class="btn">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        CKEDITOR.replace( 'redemaroc_redebundle_images[presentation]' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'redemaroc_redebundle_images_plusinfo' );
+    </script>
+
+{% endblock %}

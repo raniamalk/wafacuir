@@ -1,0 +1,376 @@
+
+#####       BackOffice route        #####
+
+
+
+rede_backoffice:
+    path:     /
+    defaults: { _controller: redeBundle:Default:bo }
+
+
+
+
+#####       Presentation routing        #####
+
+
+
+presentation_add:
+    path:     /presentation/add
+    defaults: { _controller: redeBundle:BackControllers/presentation:Add }
+
+presentation_list:
+    path:     /presentation/list
+    defaults: { _controller: redeBundle:BackControllers/presentation:list }
+
+presentation_edit:
+    path:     /presentation/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/presentation:edit }
+
+presentation_delete:
+    path:     /presentation/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/presentation:delete }
+
+
+
+#####       Produit routing        #####
+
+
+
+produit_add:
+    path:     /produit/add
+    defaults: { _controller: redeBundle:BackControllers/produit:Add }
+
+produit_list:
+    path:     /produit/list
+    defaults: { _controller: redeBundle:BackControllers/produit:list }
+
+produit_edit:
+    path:     /produit/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/produit:edit }
+
+produit_delete:
+    path:     /produit/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/produit:delete }
+
+
+
+#####       Contact routing        #####
+
+
+
+contact_edit:
+    path:     /contact/edit/{id}
+    defaults: { _controller: redeBundle:contact:edit}
+contact_list:
+    path:     /contact/list
+    defaults: { _controller: redeBundle:contact:list}
+contact_delete:
+    path:     /contact/delete/{id}
+    defaults: { _controller: redeBundle:contact:delete}
+
+
+
+#####       avis routing        #####
+
+
+
+avis_edit:
+    path:     /avis/edit/{id}
+    defaults: { _controller: redeBundle:avis:edit}
+avis_list:
+    path:     /avis/list
+    defaults: { _controller: redeBundle:avis:list}
+avis_delete:
+    path:     /avis/delete/{id}
+    defaults: { _controller: redeBundle:avis:delete}
+
+
+
+
+#####       devis routing        #####
+
+
+
+devis_edit:
+    path:     /devis/edit/{id}
+    defaults: { _controller: redeBundle:devis:edit}
+devis_list:
+    path:     /devis/list
+    defaults: { _controller: redeBundle:devis:list}
+devis_delete:
+    path:     /devis/delete/{id}
+    defaults: { _controller: redeBundle:devis:delete}
+
+
+
+
+
+#####       Document routing        #####
+
+
+
+
+document_add:
+    path:     /document/new
+    defaults: { _controller: redeBundle:BackControllers/document:new }
+
+document_list:
+    path:     /document/list
+    defaults: { _controller: redeBundle:BackControllers/document:list }
+
+
+
+
+#####       Upload routing        #####
+
+
+
+upload_add:
+    path:     /upload/add
+    defaults: { _controller: redeBundle:BackControllers/upload:Add }
+
+upload_list:
+    path:     /upload/list
+    defaults: { _controller: redeBundle:BackControllers/upload:list }
+
+upload_edit:
+    path:     /upload/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/upload:edit }
+
+upload_delete:
+    path:     /upload/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/upload:delete }
+
+
+
+
+#####       Slider routing        #####
+
+
+
+slider_add:
+    path:     /slider/add
+    defaults: { _controller: redeBundle:BackControllers/slider:Add }
+
+slider_list:
+    path:     /slider/list
+    defaults: { _controller: redeBundle:BackControllers/slider:list }
+
+slider_edit:
+    path:     /slider/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/slider:edit }
+
+slider_delete:
+    path:     /slider/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/slider:delete }
+
+
+
+
+#####       Home routing        #####
+
+
+
+home_add:
+    path:     /home/add
+    defaults: { _controller: redeBundle:BackControllers/home:Add }
+
+home_list:
+    path:     /home/list
+    defaults: { _controller: redeBundle:BackControllers/home:list }
+
+home_edit:
+    path:     /home/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/home:edit }
+
+home_delete:
+    path:     /home/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/home:delete }
+
+
+
+#####       reference routing        #####
+
+
+
+refer_add:
+    path:     /refer/add
+    defaults: { _controller: redeBundle:BackControllers/refer:Add }
+
+refer_list:
+    path:     /refer/list
+    defaults: { _controller: redeBundle:BackControllers/refer:list }
+
+refer_edit:
+    path:     /refer/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/refer:edit }
+
+refer_delete:
+    path:     /refer/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/refer:delete }
+
+
+
+#####       partenaire routing        #####
+
+
+
+partenaire_add:
+    path:     /partenaire/add
+    defaults: { _controller: redeBundle:BackControllers/partenaire:Add }
+
+partenaire_list:
+    path:     /partenaire/list
+    defaults: { _controller: redeBundle:BackControllers/partenaire:list }
+
+partenaire_edit:
+    path:     /partenaire/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/partenaire:edit }
+
+partenaire_delete:
+    path:     /partenaire/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/partenaire:delete }
+
+
+
+#####       equipe routing        #####
+
+
+
+equipe_add:
+    path:     /equipe/add
+    defaults: { _controller: redeBundle:BackControllers/equipe:Add }
+
+equipe_list:
+    path:     /equipe/list
+    defaults: { _controller: redeBundle:BackControllers/equipe:list }
+
+equipe_edit:
+    path:     /equipe/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/equipe:edit }
+
+equipe_delete:
+    path:     /equipe/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/equipe:delete }
+
+
+
+#####       video routing        #####
+
+
+
+video_add:
+    path:     /video/add
+    defaults: { _controller: redeBundle:BackControllers/video:Add }
+
+video_list:
+    path:     /video/list
+    defaults: { _controller: redeBundle:BackControllers/video:list }
+
+video_edit:
+    path:     /video/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/video:edit }
+
+video_delete:
+    path:     /video/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/video:delete }
+
+
+
+
+#####       Images routing        #####
+
+
+
+images_add:
+    path:     /images/add
+    defaults: { _controller: redeBundle:BackControllers/images:Add }
+
+images_list:
+    path:     /images/list
+    defaults: { _controller: redeBundle:BackControllers/images:list }
+
+images_edit:
+    path:     /images/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/images:edit }
+
+images_delete:
+    path:     /images/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/images:delete }
+
+
+
+#####       Menu routing        #####
+
+
+
+menu_add:
+    path:     /categorie/add
+    defaults: { _controller: redeBundle:BackControllers/menu:Add }
+
+menu_list:
+    path:     /categorie/list
+    defaults: { _controller: redeBundle:BackControllers/menu:list }
+
+menu_edit:
+    path:     /categorie/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/menu:edit }
+
+menu_delete:
+    path:     /categorie/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/menu:delete }
+
+
+
+#####       souscategorie (Type) routing        #####
+
+
+
+type_add:
+    path:     /sous-categorie/add
+    defaults: { _controller: redeBundle:BackControllers/type:Add }
+
+type_list:
+    path:     /sous-categorie/list
+    defaults: { _controller: redeBundle:BackControllers/type:list }
+
+type_edit:
+    path:     /sous-categorie/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/type:edit }
+
+type_delete:
+    path:     /sous-categorie/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/type:delete }
+
+
+
+
+#####       souscategorie2 routing        #####
+
+
+
+souscategorie_add:
+    path:     /sous-categorie2/add
+    defaults: { _controller: redeBundle:BackControllers/souscategorie:Add }
+
+souscategorie_list:
+    path:     /sous-categorie2/list
+    defaults: { _controller: redeBundle:BackControllers/souscategorie:list }
+
+souscategorie_edit:
+    path:     /sous-categorie2/edit/{id}
+    defaults: { _controller: redeBundle:BackControllers/souscategorie:edit }
+
+souscategorie_delete:
+    path:     /sous-categorie2/delete/{id}
+    defaults: { _controller: redeBundle:BackControllers/souscategorie:delete }
+
+
+
+
+
+
+
+
+
+

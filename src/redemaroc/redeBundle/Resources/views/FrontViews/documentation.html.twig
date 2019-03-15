@@ -1,0 +1,53 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - Documentation {% endblock %}
+{% block meta %}
+    <meta name="keywords" content="#">
+    <meta name="description" content="#">
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+<!-- Start Documentation -->
+<section id="mu-produit">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Jetez un oeil sur</span>
+                        <h2>Nos documents</h2>
+                    </div>
+
+
+                        <div class="mu-gallery-body">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="colone-2">
+                                    <div align=center>
+                                        <img class="img-doc" alt="Document_PDF" src={{ asset('FrontEnd/assets/img/pdf.png') }}>
+                                    </div>
+
+                                    <div class="list-group doc-list">
+                                        {% for u in upload %}
+                                            <div class="div-doc">
+                                                <a  href="{{ asset('uploads/documents/' ~ u.path) }}" target="_blank" class="list-group-item content"> {{ u.titre }} &nbsp;&nbsp; <span ><img class="viewdoc" src={{ asset('FrontEnd/assets/img/viewdoc.png') }}></span></a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End documentation -->
+
+{% endblock %}

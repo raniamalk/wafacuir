@@ -1,0 +1,55 @@
+{% extends 'redeBundle::FrontViews/index.html.twig' %}
+{% block title %} RedeMaroc - Galerie {% endblock %}
+{% block meta %}
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+    <!-- Start Gallery -->
+    <section id="mu-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-gallery-area">
+
+                        <div class="mu-title">
+                            <span class="mu-subtitle"> Découvrez </span>
+                            <h2> Notre galerie </h2>
+                        </div>
+
+                        <div class="mu-gallery-content">
+
+                            <!-- Start gallery image -->
+                            <div class="mu-gallery-body">
+
+                                {% for p in produit %}
+                                <!-- start single gallery image -->
+                                <div class="mu-single-gallery col-md-4">
+                                    <div class="mu-single-gallery-item">
+                                        <figure class="mu-single-gallery-img">
+                                            <a class="mu-imglink" href="{{ asset('uploads/produitPrincipale/' ~ p.path) }}">
+                                                <img alt="img" src="{{ asset('uploads/produitPrincipale/' ~ p.path) }}">
+                                                <div class="mu-single-gallery-info">
+                                                    <img class="mu-view-btn" src="{{ asset('FrontEnd/assets/img/plus.png') }}" alt="plus icon img">
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <!-- End single gallery image -->
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Gallery -->
+
+
+{% endblock %}
